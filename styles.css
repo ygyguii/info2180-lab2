@@ -1,0 +1,226 @@
+:root{
+  --text-color: #2D3748;
+  --muted: #718096;
+  --accent-green: #48BB78;
+  --accent-blue: #4299E1;
+  --header-bg: #63B3ED;
+  --header-text: #FFFFFF;
+  --about-bg: #E2E8F0;
+  --footer-bg: #2C5282;
+  --sidebar-bg: #f7fafc;
+  --default-border: rgba(0,0,0,0.06);
+  --base-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --serif-stack: Georgia, "Times New Roman", Times, serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: var(--text-color);
+  font-family: var(--base-font-stack);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  display: grid;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "main   sidebar"
+    "footer footer";
+  align-items: start;
+}
+
+.site-header   { grid-area: header; }
+.main-content  { grid-area: main; }
+.sidebar       { grid-area: sidebar; }
+.site-footer   { grid-area: footer; }
+
+.site-header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-header h1 {
+  font-family: var(--serif-stack);
+  font-size: 36px;
+  margin: 0;
+  line-height: 1;
+  color: var(--header-text);
+}
+
+.site-header p {
+  margin: 0;
+  color: var(--header-text);
+  font-size: 1rem;
+}
+
+.site-header .circle-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.9);
+}
+
+.main-content {
+  padding: 8px 0;
+}
+
+.post-title {
+  font-size: 32px;
+  color: var(--accent-green);
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.post-body {
+  margin-top: 12px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sidebar {
+  background: var(--sidebar-bg);
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px var(--default-border);
+  font-family: var(--base-font-stack);
+}
+
+.sidebar .widget + .widget { margin-top: 20px; }
+
+.sidebar .widget h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  font-family: var(--serif-stack);
+}
+
+.sidebar .about h3     { color: #000000; }
+.sidebar .social h3,
+.sidebar .archives h3  { color: var(--accent-green); }
+
+.sidebar .about {
+  background: var(--about-bg);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.sidebar .about p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.sidebar .widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar .widget li {
+  margin: 6px 0;
+}
+
+.sidebar .widget a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.sidebar .widget a:hover,
+.sidebar .widget a:focus {
+  text-decoration: underline;
+}
+
+.float-right {
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 12px;
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+}
+
+.circle-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid #38B2AC;
+  object-fit: cover;
+  display: block;
+}
+
+.site-footer {
+  background: var(--footer-bg);
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+a { cursor: pointer; }
+button { font-family: inherit; }
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    padding: 16px;
+  }
+
+  .float-right {
+    float: none;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
